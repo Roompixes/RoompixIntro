@@ -1,0 +1,73 @@
+#wrapper,#wrapperMinted {
+  width: 100%;
+  max-width: 964px;
+  position: relative;
+}
+
+#carousel,#carouselMinted {
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+#carousel::-webkit-scrollbar,
+#carouselMinted::-webkit-scrollbar {
+  height: 0;
+}
+
+#prev,
+#next,
+#nextMinted,
+#prevMinted {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  position: absolute;
+  height: auto;
+}
+
+#prev,
+#prevMinted {
+  top: 50%;
+  left: -10%;
+  transform: translate(50%, -50%);
+}
+
+#next,
+#nextMinted {
+  top: 50%;
+  right: -10%;
+  transform: translate(-50%, -50%);
+}
+
+#content,
+#contentMinted {
+  display: grid;
+  grid-gap: 16px;
+  grid-auto-flow: column;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+div.galleryImage {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 160px;
+  height: 220px;
+}
+img.galleryImg {
+  width: 160px;
+  height: 160px;
+  background-color: grey;
+}
+.caption {
+  font-size: xx-small;
+  display: block;
+}
+

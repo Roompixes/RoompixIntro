@@ -1,0 +1,232 @@
+body{
+  /* background-color: #181425; */
+  background-image: url('../images/values-bg.png');
+  background-size: cover;
+  color: #c0cbdc;
+}
+
+.header,
+.get-help,
+.footer{
+  background-color: #181425;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 2.5rem; 
+  padding-bottom: 2.5rem;
+}
+
+#ownedSection{
+  padding-bottom: 10rem;
+}
+
+.btn-social:hover {
+  opacity: 1;
+
+  /** default is 1, scale it to 1.5 */
+  transform: scale(1.5, 1.5);
+}
+
+/* Shared
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #181425;
+  border-color: #33C3F0; }
+  
+  /* Sections
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .section {
+    padding: 4rem 0 3.5rem;
+    text-align: center;
+  }
+  .section-heading,
+  .section-description {
+    margin-bottom: 1.2rem;
+  }
+  
+  /* Hero
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .phones {
+    position: relative;
+  }
+  .phone {
+    position: relative;
+    max-width: 80%;
+    margin: 3rem auto -12rem;
+  }
+  .phone + .phone {
+    display: none;
+  }
+  
+  /* Values
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  .values {
+    /* background-image: url('../images/values-bg.png'); */
+    background-size: cover;
+    color: rgb(255, 255, 255);
+    padding-bottom: 5rem;
+  }
+  .value-multiplier {
+    margin-bottom: .5rem;
+    color: #ffffff;
+  }
+  .value-heading {
+    margin-bottom: .3rem;
+  }
+  .value-description {
+    opacity: .8;
+    font-weight: 300;
+  }
+  
+  
+  /* Categories
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .categories {
+    /* background-image: url('../images/values-bg.png'); */
+    
+    background-size: cover;
+    color: rgb(255, 255, 255);
+  }
+  .categories .section-description { 
+    margin-bottom: 10rem;
+  }
+  
+  /* Bigger than 550 */
+  @media (min-width: 550px) {
+    .section {
+      padding: 6rem 0 5.5rem;
+    }
+    .hero {
+      padding-bottom: 12rem;
+      text-align: left;
+      height: 165px;
+    }
+    .phone {
+      position: absolute;
+      top: -7rem;
+      right: 3rem;
+      max-height: 362px;
+      z-index: 3;
+    }
+    .phone + .phone {
+      top: -6rem;
+      display: block;
+      max-width: 73.8%;
+      right: 0;
+      z-index: 2;
+      max-height: 338px;
+    }
+    .hero-heading {
+      font-size: 2.4rem;
+    }
+  }
+  
+  /* Bigger than 750 */
+  @media (min-width: 750px) {
+    .hero {
+      height: 190px;
+    }
+    .hero-heading {
+      font-size: 2.6rem;
+    }
+    .section {
+      padding: 7rem 0 7.5rem;
+    }
+    .hero {
+      padding: 16rem 0 14rem;
+    }
+    .section-description {
+      max-width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .phone {
+      top: -14rem;
+      right: 5rem;
+      max-height: 510px;
+    }
+    .phone + .phone {
+      top: -12rem;
+      max-height: 472px;
+    }
+    .categories {
+      padding: 15rem 0 8rem;
+    }
+  }
+  
+  /* Bigger than 1000 */
+  @media (min-width: 1000px) {
+    .section {
+      padding: 10rem 0 5rem;
+    }
+    .hero {
+      padding: 22rem 0;
+    }
+    .hero-heading {
+      font-size: 3.0rem;
+    }
+    .phone {
+      top: -16rem;
+      max-height: 615px;
+    }
+    .phone + .phone {
+      top: -14rem;
+      max-height: 570px;
+    }
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+  }
+
+  img.modalImg {
+    width: 40%;
+    height: 40%;
+    float: left;
+    padding-right:2rem;
+  }
+  
+  /* The Close Button */
+  .closeModal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .closeModal:hover,
+  .closeModal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
