@@ -89,7 +89,14 @@ $(".galleryImage").on("click", function(e){
 
 $(".closeModal").on("click", function(e){
   $("#myModal").css('display','none');
+  $("#faqModal").css('display','none');
 });
+
+$("#faqButton").on("click", function(e){
+  $("#faqModal").css('display','block');
+});
+
+faqButton
 
 $(window).on("click", function(e){
   if (e.target == document.getElementById("myModal")) {

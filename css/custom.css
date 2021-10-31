@@ -32,6 +32,14 @@ body{
   transform: scale(1.5, 1.5);
 }
 
+.modal-content ul{
+  list-style-type: none;
+}
+
+.modal-content ul li{
+  list-style-type: none;
+}
+
 /* Shared
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button.button-primary,

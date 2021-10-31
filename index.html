@@ -5,7 +5,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>Roompixes NFT</title>
-  <meta name="description" content="Roompixes are uniqually generated non fungible token (NFTs) on Fantom Opera chain. There are collection of 16384 Roompixes which are procedurally generated to make sure that every Roompix would be unique and exceptional.">
+  <meta name="description" content="Roompixes are uniqually generated non fungible token (NFTs) on Fantom Opera chain. There are collection of 8192 Roompixes which are procedurally generated to make sure that every Roompix would be unique and exceptional.">
   <meta name="author" content="Nice authors, bery good">
 
   <!-- Mobile Specific Metas  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -25,6 +25,10 @@
   <!-- Scripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="./abi.js" ></script>
+  <script src="./jquery-3.6.0.min.js"></script>
+  <!-- <script src="./web3.min.js"></script> -->
+  <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+  <script src="./erc.js" ></script>
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -43,6 +47,15 @@
         <div class="two columns value">
             <h2 class="value-multiplier">Roompixes</h2>
         </div>
+        <div class="six columns value">
+            <p> </p>
+        </div>
+        <div class="two columns value">
+          <a class="button" id="faqButton" style="margin-top: 10px; color: whitesmoke;">FAQ</a>
+        </div>
+        <div class="two columns value" style="margin-left: 0px;">
+            <a class="button button-primary" id="connectWalletButton" style="margin-top: 10px;">Connect Wallet</a>
+        </div>
       </div>
     </div>
   </div>
@@ -53,15 +66,116 @@
     <div class="container">
       <div class="row">
         <div class="column value">
-		<h1> Comming Soon </h1>
           <p class="value-description">
             Roompixes are uniqually generated non fungible token (NFTs) on Fantom Opera chain. 
-            There are collection of 16384 (2<sup>14</sup>) Roompixes which are procedurally generated to make sure that every Roompix would be unique and exceptional.
+            There are collection of 8192 (2<sup>13</sup>) Roompixes which are procedurally generated to make sure that every Roompix would be unique and exceptional.
+
+          </p>
+          <p class="section-description">
+            <a class="button button-primary" id="refreshButton" style="margin-top: 10px;">Refresh</a>
+            <br>
+            Last Refresh: <b id="lastRefreshTime">Please connect your wallet for update.</b>
           </p>
         </div> 
       </div>
     </div>
   </div>
+
+  <!-- Mint Section
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="section get-help" id="mintSection">
+    <div class="container">
+      <div class="row">
+        
+        <div class="five columns value">
+          <h3 class="value-multiplier">Mint</h3>
+          <table class="u-full-width">
+            <tbody>
+              <tr>
+                <td>Current Price</td>
+                <td id="currentPrice">? FTM</td>
+              </tr>
+              <tr>
+                <td>Minted</td>
+                <td id="totalMinted">?/8192</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Amount 
+            <input id="mintAmount" type="number" value="1" min="1" max="10"
+            onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57 && checkMintAmountValue(event.charCode);" 
+            onchange="updateGuessPrice()"
+            style="max-width: 80px;margin-bottom: 0px;">
+            <a class="button button-primary" id="mintButton" style="margin: 0px;">Mint</a>
+          </p>
+          <p>Guess price : <b id="guessPrice">?</b> FTM + GAS</p>
+        </div>
+
+        <div class="seven columns value">
+          <h3 class="value-multiplier">Last Minted</h3>          
+          <div id="wrapper">
+            <div id="carousel">
+              <div id="content">
+                <!-- <div class="galleryImage">
+                  <img class="galleryImg" src="images/sample.png"/>
+                  <span class="caption">#6541 Roofyvery longnametest</span>
+                </div> -->
+              </div>
+            </div>
+            <button id="prev" style="display: none;">
+              <img src="images/left.png" />
+            </button>
+            <button id="next" style="display: none;">
+              <img src="images/right.png" />
+            </button>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+  
+<!-- Owned section
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="section categories" id="ownedSection">
+    <div class="container">
+      <h3 class="section-heading">My Roompixes</h3>
+      
+
+      <div class="row">
+        <div class="column category">
+          <div id="wrapperMinted" >
+            <div id="carouselMinted">
+              <div id="contentMinted"style="width: min-content;">
+                <!-- <div class="galleryImage">
+                  <img class="galleryImg" src="images/sample.png"/>
+                  <span class="caption">#6541 Roofyvery longnametest</span>
+                </div> -->
+              </div>
+            </div>
+            <button id="prevMinted" >
+              <img src="images/left.png" />
+            </button>
+            <button id="nextMinted">
+              <img src="images/right.png" />
+            </button>
+          </div>
+          <h5>Transfer</h5>
+          <div id="transferContainer">
+             ID : <input id="transferNFTID" type="number" value="1" min="0" max="8192" 
+             onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57;" 
+             style="max-width: 120px;margin-bottom: 5px;color: #c0cbdc;">
+
+
+             Address : <input class="u-full-width" placeholder="0x0000000000000000000000000000000000000000" style="max-width: 320px;margin-bottom: 0px;line-height: 28px;color: #c0cbdc;"id="transferNFTAddress">
+             <br>
+             <a class="button button-primary" id="transferButton" style="margin-top: 10px;">Transfer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <!-- Footer
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class=" footer">
@@ -70,13 +184,85 @@
         <a href="https://twitter.com/roompixes" target="_blank"><img class="btn-social" src="./images/Twitter24v2.png"></a>
         <a href="https://www.reddit.com/r/roompixes" target="_blank"><img class="btn-social" src="./images/Plebbit24.png"></a>
         <a href="https://t.me/joinchat/UqxbX2zMkOg1NGU0" target="_blank"><img class="btn-social" src="./images/Telegram24.png"></a>
+        <a href="https://discord.gg/anDTmfEtnU"><img class="btn-social" src="./images/Discord24.png"></a>
+        <!-- <a href="page.html"><img class="btn-social" src="./images/FtmScan.png"></a> -->
       </p>
     </div>
   </div>
 
+
+  <div id="faqModal" class="modal">
+    <div class="modal-content" style="color: #181425; width: 50%;padding-bottom: 120px;">
+      <span class="closeModal">X</span>
+      <h4>F.A.Q.</h4>
+        <ul >
+          <li><b>What is this?</b></li>
+          <ul >
+            <li>This is a NFT (non-fungible token) project based on procedurally generated pixel art rooms. Project is based on the Fantom network.</li>
+            <li>Made from more than 400 assets in total there can be billions of combinations - of which only the best 8192 are procedurally generated.</li>
+          </ul>
+          <li><b>Prices</b></li>
+          <ul >
+            <li>Starting at 1 FTM the mint price will go up by 1 FTM every 1000 rooms.</li>
+          </ul>
+
+          <li><b>Rares</b></li>
+          <ul >
+            <li>About 0.8% of all rooms have rare filters which may totally change how the room looks. Also, more than 0.1% of rooms will be unique, meaning it contains themed assets and surroundings specific for that room.</li>
+          </ul>
+          <li><b>Roadmap</b></li>
+          <ul >
+            <li>The future of this project depends on its success. The more popularity it gets, the more features will be implemented. We have a lot of ideas that would break the cycle of just a collectable - like - trait viewer, room explorer, rarity checker, rare/unique announcement bots and even extending current NFT with gamified tools.</li>
+          </ul>
+          <li><b>Selling/Buying</b></li>
+          <ul >
+            <li>We are working on integration with artion.io and paintswap.</li>
+          </ul>
+          <li><b>If you are facing specific issues or have questions do not hesitate to contact us on our social platforms.</b></li>
+        </ul>
+    </div>  
+  </div>
+
   <!-- Modal info : TBD
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="closeModal">X</span>
+      <h5>#6541 Roofyvery longnametest</h5>
+      
+      <img class="modalImg" src="images/sample.png"/>
+      <table style="font-size:small; display: inline;">
+        <tbody>
+          <tr>
+            <td>Attribute</td>
+            <td>Nice</td>
+          </tr>
+          <tr>
+            <td>Attribute</td>
+            <td>Nice</td>
+          </tr>
+          <tr>
+            <td>Attribute</td>
+            <td>Nice</td>
+          </tr>
+          <tr>
+            <td>Attribute</td>
+            <td>Nice</td>
+          </tr>
+          <tr>
+            <td>Attribute</td>
+            <td>Nice</td>
+          </tr>
+        </tbody>
+      </table>
+      <p >
+        
+      </p>
+    </div>  
+  </div>
+
   <script src="./scroller.js"></script>
+  <script src="./notie.min.js"></script>
   
 <!-- End Document  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
