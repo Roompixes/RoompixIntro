@@ -214,7 +214,8 @@ input[type="button"].button-primary {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 30%;
+    
+    width: min-content;
   }
 
   img.modalImg {

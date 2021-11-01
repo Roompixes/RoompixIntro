@@ -82,9 +82,8 @@ function checkScrollButtons() {
   }  
 }
 
-$(".galleryImage").on("click", function(e){
+$(".galleryImg").on("click", function(e){
   $("#myModal").css('display','block');
-
 });
 
 $(".closeModal").on("click", function(e){
@@ -96,10 +95,9 @@ $("#faqButton").on("click", function(e){
   $("#faqModal").css('display','block');
 });
 
-faqButton
 
-$(window).on("click", function(e){
-  if (e.target == document.getElementById("myModal")) {
-    document.getElementById("myModal").style.display = "none";
-  }
-});
+// $(window).on("click", function(e){
+//   if (e.target == document.getElementById("myModal")) {
+//     document.getElementById("myModal").style.display = "none";
+//   }
+// });
